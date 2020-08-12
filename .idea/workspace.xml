@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b1e92d1-3d7a-4980-b78d-f5487110f425" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/paginator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Controller/ProductoControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Categoria.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Categoria.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Producto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Producto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategoriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoriaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CategoriaRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategoriaRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ProductoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductoRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/ProductoControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/ProductoControllerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -153,7 +151,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/phpunit" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -163,12 +161,17 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.ProductoControllerTest">
+    <configuration name="ProductoControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\ProductoControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/ProductoControllerTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration name="CategoriaController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/Controller/CategoriaController.php">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.ProductoControllerTest" />
         <item itemvalue="PHP Script.CategoriaController.php" />
       </list>
     </recent_temporary>
@@ -183,7 +186,7 @@
       <updated>1597166366733</updated>
       <workItem from="1597166368647" duration="17352000" />
       <workItem from="1597227692042" duration="41000" />
-      <workItem from="1597227828558" duration="19891000" />
+      <workItem from="1597227828558" duration="22067000" />
     </task>
     <servers />
   </component>
@@ -191,14 +194,46 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="274" y="22" key="#CLI_Interpreters" timestamp="1597250514080">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="274" y="22" key="#CLI_Interpreters/0.0.1366.732@0.0.1366.732" timestamp="1597250514080" />
+    <state x="338" y="0" key="#PHP" timestamp="1597250517283">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="338" y="0" key="#PHP/0.0.1366.732@0.0.1366.732" timestamp="1597250517283" />
+    <state x="267" y="22" key="#Test_Frameworks" timestamp="1597250735971">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="267" y="22" key="#Test_Frameworks/0.0.1366.732@0.0.1366.732" timestamp="1597250735971" />
     <state x="417" y="124" width="532" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597229251348">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="417" y="124" width="532" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.732@0.0.1366.732" timestamp="1597229251348" />
-    <state x="476" y="46" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1597249721923">
+    <state x="476" y="46" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1597251768898">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
-    <state x="476" y="46" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1366.732@0.0.1366.732" timestamp="1597249721923" />
+    <state x="476" y="46" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1366.732@0.0.1366.732" timestamp="1597251768898" />
+    <state x="502" y="163" key="FileChooserDialogImpl" timestamp="1597250730555">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="502" y="163" key="FileChooserDialogImpl/0.0.1366.732@0.0.1366.732" timestamp="1597250730555" />
+    <state width="1318" height="190" key="GridCell.Tab.0.bottom" timestamp="1597251275380">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1318" height="190" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1597251275380" />
+    <state width="1318" height="190" key="GridCell.Tab.0.center" timestamp="1597251275378">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1318" height="190" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1597251275378" />
+    <state width="1318" height="190" key="GridCell.Tab.0.left" timestamp="1597251275378">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1318" height="190" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1597251275378" />
+    <state width="1318" height="190" key="GridCell.Tab.0.right" timestamp="1597251275380">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state width="1318" height="190" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1597251275380" />
     <state x="180" y="0" key="SettingsEditor" timestamp="1597166581753">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
@@ -215,5 +250,16 @@
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="346" y="52" width="672" height="678" key="search.everywhere.popup/0.0.1366.732@0.0.1366.732" timestamp="1597177568101" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/Controller/ProductoControllerTest.php</url>
+          <line>7</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -5,8 +5,6 @@ namespace App\Repository;
 use App\Entity\Producto;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 
 /**
@@ -22,23 +20,6 @@ class ProductoRepository extends ServiceEntityRepository
         parent::__construct($registry, Producto::class);
     }
 
-    // /**
-    //  * @return Producto[] Returns an array of Producto objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
     public function findByCategoria($nombreAbuscar)
     {
         $entityManager = $this->getEntityManager();
@@ -52,6 +33,8 @@ class ProductoRepository extends ServiceEntityRepository
 
         return $query->getQuery()->getResult();
     }
+
+
     public function findByName($nombreAbuscar)
     {
         $entityManager = $this->getEntityManager();
@@ -64,7 +47,6 @@ class ProductoRepository extends ServiceEntityRepository
         )->setParameter('nombreAbuscar', '%' .$nombreAbuscar. '%');
 
         return $query->getResult();
-
     }
 
     public function findByPrice($priceme,$pricema): array
@@ -82,20 +64,6 @@ class ProductoRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-
-/*
-    public function findOneBySomeField($value): ?Producto
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-
-
     public function paginate($dql, $page = 1, $limit = 3)
     {
         $dql->setFirstResult($limit * ($page - 1)) // Offset
@@ -103,6 +71,4 @@ class ProductoRepository extends ServiceEntityRepository
 
         return $paginator;
     }
-
-
 }

@@ -4,17 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Producto;
 use App\Repository\CategoriaRepository;
-use ContainerCy5MCYP\getCategoriaControllerService;
-//use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerInterface;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\ProductoRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class ProductoController extends AbstractController
@@ -34,34 +30,31 @@ class ProductoController extends AbstractController
        $this->serializer = $serializer;
        $this->paginator = $paginator;
        $this->pagelimit = 3;
-
     }
 
     /**
      * @Route("/productoNombre", name="getProductoByName", methods={"GET"})
+     * @param Request $request
+     * @param ProductoRepository $productRepository
+     * @return Response
      */
     public function getProductoByNombre(Request $request, ProductoRepository $productRepository)
     {
         if (! $request->query->has('busca')){
             return new Response("No sabemos que buscar, por favor pasa por POST un nombre a buscar con key \'busca\'", 500);
         }
-        if (! $request->query->has('pagina')){
-            $pagina = 1;
-        }
-        else{
-            $pagina = $request->query->get('pagina');
-        }
+        $pagina = $this->getPage($request);
         $nombreAbuscar = $request->query->get('busca');
         $result = $productRepository->findByName($nombreAbuscar);
-        $pagination = $this->paginator->paginate($result, $pagina, $this->pagelimit);
-
-        $reports = $this->serializer->serialize($pagination, 'json');
+        $reports = $this->paginateResults($result, $pagina);
         return new Response($reports);
-
     }
 
     /**
      * @Route("/productoCategoria", name="getProductoByCategoria", methods={"GET"})
+     * @param Request $request
+     * @param ProductoRepository $productRepository
+     * @return Response
      */
     public function getProductoByCategoria(Request $request, ProductoRepository $productRepository)
     {
@@ -71,8 +64,7 @@ class ProductoController extends AbstractController
         $pagina = $this->getPage($request);
         $nombreAbuscar = $request->query->get('busca');
         $result = $productRepository->findByCategoria($nombreAbuscar);
-        $pagination = $this->paginator->paginate($result, $pagina, $this->pagelimit);
-        $reports = $this->serializer->serialize($pagination, 'json');
+        $reports = $this->paginateResults($result, $pagina);
         return new Response($reports);
     }
 
@@ -89,13 +81,15 @@ class ProductoController extends AbstractController
         $pagina = $this->getPage($request);
 
         $result = $productRepository->findByPrice($preciomenor, $preciomayor);
-        $pagination = $this->paginator->paginate($result, $pagina, $this->pagelimit);
-        $reports = $this->serializer->serialize($pagination, 'json');
+        $reports = $this->paginateResults($result, $pagina);
         return new Response($reports);
     }
 
     /**
      * @Route("/producto", name="createProducto", methods={"POST"})
+     * @param Request $request
+     * @param CategoriaRepository $categoriaRepository
+     * @return Response
      */
     public function createProducto (Request $request, CategoriaRepository $categoriaRepository)
     {
@@ -107,14 +101,15 @@ class ProductoController extends AbstractController
                 return new Response("Tienes que pasar un JSON con los datos de producto");
             }
         }
-        /* $this->compruebaJson($request); */
 
         $producto = new Producto();
-        $producto->setNombre($productoJson['nombre']); /* TODO poner control de que exite y si no avisar */
+        /* TODO poner control de que existen todas las variables y si no avisar */
+        $producto->setNombre($productoJson['nombre']);
         $producto->setDescripcion(array_key_exists('descripcion', $productoJson) ? $productoJson['descripcion'] : "");
         $producto->setImagen(array_key_exists('imagen', $productoJson) ? $productoJson['imagen'] : "");
         $producto->setPrecio($productoJson['precio']);
-        $producto->setPrecioIva($productoJson['precio'] * 1.21); /*TODO meter el iva en la bbdd o de alguna forma de multiplicar mas dinamica*/
+        /*TODO meter el iva en la bbdd o de alguna forma de multiplicar mas dinamica*/
+        $producto->setPrecioIva($productoJson['precio'] * 1.21);
         $categoriaObject = $categoriaRepository->findOneBy(['nombre' => $productoJson['categoria']]);
 
         if ($categoriaObject === null) { /*  TODO revisar si en este caso, o creamos categoria nueva, o falla... */
@@ -122,10 +117,7 @@ class ProductoController extends AbstractController
         }
         $producto->setCategoria($categoriaObject);
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($producto);
-
-        // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
         return new Response('Producto guardado con el ID; ' . $producto->getId());
@@ -135,12 +127,7 @@ class ProductoController extends AbstractController
     {
         return 0 === strpos($request->headers->get($name), $value);
     }
-    /*
-     * TODO funcion, para comprobar las keys de la bbdd y ver si el Json las trae todas...
-    private function compruebaJson (Request $jsonData)
-    {
-    }
-    */
+
     /**
      * @param Request $request
      * @return bool|float|int|string|null
@@ -155,5 +142,15 @@ class ProductoController extends AbstractController
         return $pagina;
     }
 
-
+    /**
+     * @param array $result
+     * @param int|null $pagina
+     * @return string
+     */
+    private function paginateResults(array $result, ?int $pagina): string
+    {
+        $pagination = $this->paginator->paginate($result, $pagina, $this->pagelimit);
+        $reports = $this->serializer->serialize($pagination, 'json');
+        return $reports;
+    }
 }
