@@ -43,7 +43,7 @@ class Producto
     private $imagen;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categoria::class, inversedBy="productos")
+     * @ORM\ManyToOne(targetEntity=Categoria::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $categoria;
@@ -85,8 +85,8 @@ class Producto
     public function setPrecio(float $precio): self
     {
         $this->precio = $precio;
-
-        return $this;
+        
+	return $this;
     }
 
     public function getPrecioIva(): ?float

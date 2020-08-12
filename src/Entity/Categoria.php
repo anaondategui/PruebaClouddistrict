@@ -24,16 +24,6 @@ class Categoria
      */
     private $nombre;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Producto::class, mappedBy="categoria", orphanRemoval=true)
-     */
-    private $productos;
-
-    public function __construct()
-    {
-        $this->productos = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -51,34 +41,4 @@ class Categoria
         return $this;
     }
 
-    /**
-     * @return Collection|Producto[]
-     */
-    public function getProductos(): Collection
-    {
-        return $this->productos;
-    }
-
-    public function addProducto(Producto $producto): self
-    {
-        if (!$this->productos->contains($producto)) {
-            $this->productos[] = $producto;
-            $producto->setCategoria($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProducto(Producto $producto): self
-    {
-        if ($this->productos->contains($producto)) {
-            $this->productos->removeElement($producto);
-            // set the owning side to null (unless already changed)
-            if ($producto->getCategoria() === $this) {
-                $producto->setCategoria(null);
-            }
-        }
-
-        return $this;
-    }
 }
